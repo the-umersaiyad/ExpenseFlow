@@ -8,11 +8,13 @@ export function AnimeFadeUp({
   delay = 0,
   stagger: staggerAmount = 100,
   className = "",
+  id,
 }: {
   children: React.ReactNode
   delay?: number
   stagger?: number
   className?: string
+  id?: string
 }) {
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -31,7 +33,7 @@ export function AnimeFadeUp({
   }, [delay, staggerAmount])
 
   return (
-    <div ref={containerRef} className={className}>
+    <div ref={containerRef} className={className} id={id}>
       {children}
     </div>
   )

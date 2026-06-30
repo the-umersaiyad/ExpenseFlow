@@ -54,15 +54,15 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex h-screen w-full items-center justify-center px-4 bg-gray-50">
-      <Card className="w-full max-w-sm shadow-lg">
-        <CardHeader>
-          <CardTitle className="text-2xl text-center">Login to ExpenseFlow</CardTitle>
-          <CardDescription className="text-center">
+    <div className="flex min-h-screen w-full items-center justify-center px-4 py-8 bg-background">
+      <div className="w-full max-w-[400px] shrink-0 bg-bg-white border border-stroke shadow-card rounded-3xl p-8">
+        <div className="mb-8">
+          <h1 className="text-3xl font-extrabold text-primary-text text-center">Welcome Back</h1>
+          <p className="text-secondary-text text-center mt-2 font-medium">
             Enter your email and password to access your account.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
+          </p>
+        </div>
+        <div>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
               <FormField
@@ -70,11 +70,15 @@ export default function LoginPage() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email</FormLabel>
+                    <FormLabel className="block text-[10px] font-bold text-secondary-text uppercase tracking-wider mb-2">Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="m@example.com" {...field} />
+                      <Input 
+                        placeholder="m@example.com" 
+                        {...field} 
+                        className="w-full h-14 bg-bg-white border border-stroke shadow-button rounded-xl px-4 text-sm font-medium text-primary-text placeholder:text-stroke focus:outline-none focus:ring-2 focus:ring-primary-soft transition-all"
+                      />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="text-badge-pending-text text-xs mt-1.5 font-medium" />
                   </FormItem>
                 )}
               />
@@ -83,29 +87,37 @@ export default function LoginPage() {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Password</FormLabel>
+                    <FormLabel className="block text-[10px] font-bold text-secondary-text uppercase tracking-wider mb-2 mt-4">Password</FormLabel>
                     <FormControl>
-                      <Input type="password" {...field} />
+                      <Input 
+                        type="password" 
+                        {...field} 
+                        className="w-full h-14 bg-bg-white border border-stroke shadow-button rounded-xl px-4 text-sm font-medium text-primary-text placeholder:text-stroke focus:outline-none focus:ring-2 focus:ring-primary-soft transition-all"
+                      />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="text-badge-pending-text text-xs mt-1.5 font-medium" />
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full mt-2" disabled={isLoading}>
+              <Button 
+                type="submit" 
+                className="w-full h-14 mt-8 bg-primary hover:bg-primary-soft text-bg-white shadow-button rounded-xl font-bold text-lg transition-all" 
+                disabled={isLoading}
+              >
                 {isLoading ? "Logging in..." : "Login"}
               </Button>
             </form>
           </Form>
-        </CardContent>
-        <CardFooter className="flex justify-center border-t p-4">
-          <div className="text-sm text-center text-muted-foreground">
+        </div>
+        <div className="flex justify-center mt-8">
+          <div className="text-sm text-center text-secondary-text font-medium">
             Don&apos;t have an account?{" "}
-            <Link href="/register" className="text-primary hover:underline font-medium">
+            <Link href="/register" className="text-primary hover:text-primary-soft font-bold transition-colors">
               Sign up
             </Link>
           </div>
-        </CardFooter>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,5 +1,7 @@
 # 💸 ExpenseFlow
 
+**Live Demo:** [https://expense-floww.vercel.app/](https://expense-floww.vercel.app/)
+
 ExpenseFlow is a modern, beautifully designed personal finance tracker built with Next.js. It helps you track your income, expenses, set category budgets, and manage recurring transactions seamlessly with a sleek, animated UI.
 
 ## ✨ Features

@@ -97,7 +97,7 @@ export function DateFilterPopover({ filter, setFilter, availableYears }: DateFil
             <div className="flex items-center justify-between px-1">
               <span className="text-sm font-bold text-primary-text">Select Month</span>
               {availableYears.length > 0 && (
-                <Select value={selectedYear} onValueChange={setSelectedYear}>
+                <Select value={selectedYear} onValueChange={(val) => setSelectedYear(val || String(new Date().getFullYear()))}>
                   <SelectTrigger className="w-[100px] h-8 text-xs font-semibold bg-bg-white border-stroke shadow-button rounded-full px-3 focus:ring-0">
                     <SelectValue />
                   </SelectTrigger>

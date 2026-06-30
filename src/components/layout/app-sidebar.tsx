@@ -99,7 +99,7 @@ export function AppSidebar() {
                 return (
                   <SidebarMenuItem key={item.href}>
                     <SidebarMenuButton
-                      asChild
+                      render={<Link href={item.href} onClick={() => setOpenMobile(false)} />}
                       isActive={isActive}
                       tooltip={item.name}
                       className={cn(
@@ -109,14 +109,10 @@ export function AppSidebar() {
                           : "font-medium! text-secondary-text hover:text-primary-text hover:bg-secondary-soft!",
                       )}
                     >
-                      <Link 
-                        href={item.href} 
-                        className="flex items-center gap-3 w-full h-full"
-                        onClick={() => setOpenMobile(false)}
-                      >
-                        <Icon className="size-5! shrink-0" />
+                      <div className="flex items-center gap-3 w-full h-full">
+                        <Icon className={cn("w-5 h-5", isActive ? "text-bg-primary" : "text-secondary-text group-hover:text-primary-text")} />
                         <span>{item.name}</span>
-                      </Link>
+                      </div>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 )

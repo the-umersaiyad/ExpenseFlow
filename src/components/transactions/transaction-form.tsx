@@ -135,7 +135,7 @@ export function TransactionForm({ categories, initialData, onSuccess, onCancel }
         <div>
           <label className="block text-[10px] font-bold text-secondary-text uppercase tracking-wider mb-2">Category</label>
           <Select 
-            onValueChange={(val) => setValue("categoryId", val)} 
+            onValueChange={(val) => setValue("categoryId", val || "")} 
             defaultValue={watch("categoryId")}
           >
             <SelectTrigger className="!w-full !h-12 bg-bg-white border border-stroke shadow-button rounded-xl px-4 text-sm font-medium text-primary-text focus:ring-2 focus:ring-primary-soft">
@@ -184,7 +184,6 @@ export function TransactionForm({ categories, initialData, onSuccess, onCancel }
                     setValue("date", new Date(date.getTime() - date.getTimezoneOffset() * 60000).toISOString().split('T')[0]);
                   }
                 }}
-                initialFocus
               />
             </PopoverContent>
           </Popover>

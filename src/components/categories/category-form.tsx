@@ -20,7 +20,7 @@ const PREDEFINED_EMOJIS = [
 const formSchema = z.object({
   name: z.string().min(1, "Name is required"),
   icon: z.string().optional(),
-  budgetLimit: z.number().min(0, "Budget cannot be negative").default(500),
+  budgetLimit: z.number().min(0, "Budget cannot be negative"),
 })
 
 interface CategoryFormProps {

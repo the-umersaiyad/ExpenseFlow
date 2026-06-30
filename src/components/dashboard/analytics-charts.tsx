@@ -149,7 +149,7 @@ export function AnalyticsCharts({ chartData, totalBalance = 0 }: Props) {
                           </p>
                           {payload.map((entry) => (
                             <p
-                              key={entry.dataKey}
+                              key={String(entry.dataKey)}
                               style={{ color: entry.color }}
                               className="flex items-center justify-between gap-4"
                             >

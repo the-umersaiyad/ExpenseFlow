@@ -221,7 +221,7 @@ export default function TransactionsPage() {
             </SelectContent>
           </Select>
 
-          <Select value={categoryFilter} onValueChange={setCategoryFilter}>
+          <Select value={categoryFilter} onValueChange={(val) => setCategoryFilter(val || "All Categories")}>
             <SelectTrigger>
               <SelectValue placeholder="Category" />
             </SelectTrigger>

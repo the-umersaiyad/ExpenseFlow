@@ -130,7 +130,7 @@ export function RecurringForm({ categories, initialData, onSuccess, onCancel }: 
       <div className="mb-6">
         <label className="block text-[10px] font-bold text-secondary-text uppercase tracking-wider mb-2">Category</label>
         <Select 
-          onValueChange={(value) => setValue("categoryId", value)} 
+          onValueChange={(value) => setValue("categoryId", value || "")} 
           defaultValue={form.getValues("categoryId")}
         >
           <SelectTrigger className="w-full bg-bg-white border border-stroke rounded-xl px-4 py-6 text-sm font-semibold text-primary-text focus:ring-2 focus:ring-primary-soft focus:border-primary transition-all shadow-button">
@@ -161,7 +161,7 @@ export function RecurringForm({ categories, initialData, onSuccess, onCancel }: 
       <div className="mb-6">
         <label className="block text-[10px] font-bold text-secondary-text uppercase tracking-wider mb-2">Frequency</label>
         <Select 
-          onValueChange={(value: "daily" | "monthly") => setValue("frequency", value)} 
+          onValueChange={(value) => setValue("frequency", (value as "daily" | "monthly") || "monthly")} 
           defaultValue={form.getValues("frequency")}
         >
           <SelectTrigger className="w-full bg-bg-white border border-stroke rounded-xl px-4 py-6 text-sm font-semibold text-primary-text focus:ring-2 focus:ring-primary-soft focus:border-primary transition-all shadow-button">
@@ -183,24 +183,23 @@ export function RecurringForm({ categories, initialData, onSuccess, onCancel }: 
       <div className="mb-6">
         <label className="block text-[10px] font-bold text-secondary-text uppercase tracking-wider mb-2">Start Date</label>
         <Popover>
-          <PopoverTrigger asChild>
+          <PopoverTrigger render={
             <Button
               variant={"outline"}
               className={cn(
                 "w-full bg-bg-white border border-stroke rounded-xl px-4 py-6 text-sm font-semibold text-primary-text hover:bg-secondary-soft focus:ring-2 focus:ring-primary-soft focus:border-primary transition-all shadow-button justify-start text-left",
                 !startDate && "text-muted-foreground"
               )}
-            >
-              <CalendarIcon className="mr-2 h-4 w-4" />
-              {startDate ? format(new Date(startDate), "PPP") : <span>Pick a date</span>}
-            </Button>
+            />
+          }>
+            <CalendarIcon className="mr-2 h-4 w-4" />
+            {startDate ? format(new Date(startDate), "PPP") : <span>Pick a date</span>}
           </PopoverTrigger>
           <PopoverContent className="w-auto p-0 bg-bg-white border-stroke rounded-2xl shadow-header" align="start">
             <Calendar
               mode="single"
               selected={startDate ? new Date(startDate) : undefined}
               onSelect={(date) => date && setValue("startDate", date.toISOString())}
-              initialFocus
               className="p-3"
             />
           </PopoverContent>
